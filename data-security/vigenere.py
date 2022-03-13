@@ -1,12 +1,23 @@
 alphabet_upper_case = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 alphabet_lower_case = "abcdefghijklmnopqrstuvwxyz"
 
-def encrypt(
-    message = "MACHI NESCA NNOTT HINK",
-    secret_key = "iamie xistt hatis cert"
-):
-    encrypted_message = ""
+def encrypt():
+    will_write_message = input("Digite 1 para escrever sua mensagem ou 2 para usar o padrao(MACHI NESCA NNOTT HINK)?\n")
+
+    if (will_write_message == 1):
+        message = input("Digite sua mensagem(sera transformada em caixa alta)\n")
+        message = message.upper()
+    else: message = "MACHI NESCA NNOTT HINK"
     
+    will_write_secret_key = input("Digite 1 para escrever sua chave ou 2 para usar o padrao(iamie xistt hatis cert)?\n")
+
+    if (will_write_secret_key == 1):
+        secret_key = input("Digite sua chave(sera transformada em minusculo)\n")
+        secret_key = secret_key.lower()
+    else: secret_key = "iamie xistt hatis cert"
+
+    encrypted_message = ""
+
     if (len(secret_key) < len(message)):
         initial_secret_key_length = len(secret_key)
 
@@ -16,8 +27,6 @@ def encrypt(
                     for j in range(0, len(message) - initial_secret_key_length):
                         secret_key += secret_key[j]
                 else: secret_key += message[i]
-
-    print(secret_key)
 
     for i in range(len(message)):
         if (message[i] in alphabet_upper_case):
